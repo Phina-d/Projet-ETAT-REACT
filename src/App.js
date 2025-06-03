@@ -109,23 +109,41 @@ function App() {
 
         {show && (
           <Card
-            bg={darkMode ? 'dark' : ''}
-            text={darkMode ? 'light' : ''}
-            style={{ maxWidth: '500px', margin: '20px auto' }}
-            className="shadow-lg"
-          >
-            <Card.Img variant="top" src={writers[currentIndex].imgSrc} />
-            <Card.Body>
-              <Card.Title>{writers[currentIndex].fullName}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">{writers[currentIndex].profession}</Card.Subtitle>
-              <Card.Text>{writers[currentIndex].bio}</Card.Text>
-              <Button
-                variant={darkMode ? 'light' : 'primary'}
-                onClick={() => setCurrentIndex((currentIndex + 1) % writers.length)}
-              >
-                Suivant
-              </Button>
-            </Card.Body>
+  bg={darkMode ? 'dark' : ''}
+  text={darkMode ? 'light' : ''}
+  style={{
+    maxWidth: '400px',
+    maxHeight: '500px',
+    margin: '20px auto',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  }}
+  className="shadow-lg"
+>
+            <Card.Img
+  variant="top"
+  src={writers[currentIndex].imgSrc}
+  style={{ height: '160px', objectFit: 'contain', padding: '10px' }}
+/>
+      <Card.Body style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+  <div>
+    <Card.Title>{writers[currentIndex].fullName}</Card.Title>
+    <Card.Subtitle className="mb-2 text-muted">{writers[currentIndex].profession}</Card.Subtitle>
+    <Card.Text style={{ fontSize: '0.85rem', maxHeight: '150px', overflowY: 'auto' }}>
+      {writers[currentIndex].bio}
+    </Card.Text>
+  </div>
+
+  <Button
+    variant={darkMode ? 'light' : 'primary'}
+    onClick={() => setCurrentIndex((currentIndex + 1) % writers.length)}
+    className="mt-3"
+  >
+    Suivant
+  </Button>
+</Card.Body>
+
           </Card>
         )}
 
